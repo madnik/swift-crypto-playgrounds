@@ -2,6 +2,8 @@
 
 import Foundation
 
+//For simplicity this assumes message and key contains ascii encodable charachters
+
 func XOR(message: String, key: String) -> String? {
     let keyUtf8 = [UInt8](key.utf8)
     
@@ -10,12 +12,14 @@ func XOR(message: String, key: String) -> String? {
         }, encoding: NSUTF8StringEncoding)!
 }
 
-let key = "890098"
+let key = "iswift"
 let msg = "MADNIK"
 
 let cypher = XOR(msg, key)!
+//The cyphter is $23'/?
 
-XOR(cypher,key)!
+let decrypted = XOR(cypher,key)!
+//We should get back the message. And it does.
 
 
 
